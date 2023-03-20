@@ -20,7 +20,12 @@ public class Respawn : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player1"))
+        {
+            Player.transform.position = startPoint.transform.position;
+        }
+        
+        if (other.gameObject.CompareTag("Player2"))
         {
             Player.transform.position = startPoint.transform.position;
         }
