@@ -5,23 +5,36 @@ using UnityEngine.SceneManagement;
 
 public class FinishLine : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public AudioClip audioClip;
+    private AudioSource audioSource;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = audioClip;
     }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player1"))
         {
             SceneManager.LoadScene("EndScene");
+            audioSource.Play();
         }
     }
+
+    public void Home()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void Tutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+
+    public void Play()
+    {
+        SceneManager.LoadScene("MainLevel");
+    }
 }
+

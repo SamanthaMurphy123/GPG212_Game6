@@ -6,18 +6,21 @@ public class Pad : MonoBehaviour
 {
     public GameObject player2;
     public GameObject pad;
-    public GameObject obstacle;
 
+    public GameObject[] obstacles;
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player2"))
+        foreach (GameObject obj in obstacles)
         {
-            obstacle.active = false;
+            obj.SetActive(false);
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        obstacle.active = true;
+        foreach (GameObject obj in obstacles)
+        {
+            obj.SetActive(true);
+        }
     }
 }

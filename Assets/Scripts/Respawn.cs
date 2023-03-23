@@ -6,16 +6,14 @@ public class Respawn : MonoBehaviour
 {
     public GameObject startPoint;
     public GameObject Player;
+
+    public AudioClip audioClip;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = audioClip;
     }
 
     public void OnCollisionEnter2D(Collision2D other)
@@ -23,11 +21,13 @@ public class Respawn : MonoBehaviour
         if (other.gameObject.CompareTag("Player1"))
         {
             Player.transform.position = startPoint.transform.position;
+            audioSource.Play();
         }
         
         if (other.gameObject.CompareTag("Player2"))
         {
             Player.transform.position = startPoint.transform.position;
+            audioSource.Play();
         }
     }
 }
